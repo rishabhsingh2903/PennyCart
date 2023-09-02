@@ -1,11 +1,24 @@
-export default function Form(){
+import { useState } from "react";
+export default function Form({onsubmit}){
+    const [name,setName]=useState('');
+    const [age,setAge]=useState('');
+    const [gender,setGender]=useState('');
+    const [height,setHeight]=useState('');
+    const [weight,setWeight]=useState('');
+    const [activity,setActivity]=useState('');
+    const [budget,setBudget]=useState('');                        
+
+    function formsubmit(e){
+
+        onsubmit(name,age,gender,height,weight,activity,budget);
+    }
     function getinfo(e){
-        console.log(e.target.textContent);
+        setActivity(e.target.textContent);
     }
     return (<>
         <h1 className="d-flex justify-content-center align-items-center">Form</h1>
         <div className="d-flex justify-content-center align-items-center vh-100">
-            <form className="col-md-6" >
+            <form action="/info"className="col-md-6" onSubmit={formsubmit}>
 
 
 
@@ -14,6 +27,8 @@ export default function Form(){
                     Name
                 </label>
                 <input
+
+                    onChange={e=>setName(e.target.value)}
                     type="text"
                     className="form-control form-control-sm"
                     id="Name"
@@ -31,7 +46,7 @@ export default function Form(){
                     type="number"
                     className="form-control form-control-sm"
                     id="Age"
-                    
+                    onChange={e=>setAge(e.target.value)}
                 />
                 </div>
 
@@ -41,6 +56,8 @@ export default function Form(){
                     <input className="form-check-input" 
                     type="radio"
                     value="male"
+                    checked={gender==='male'}
+                    onChange={e=>setGender(e.target.value)}
                     name="flexRadioDefault" 
                     id="flexRadioDefault1"
                      />
@@ -52,6 +69,8 @@ export default function Form(){
                     <input className="form-check-input" 
                     type="radio" 
                     value="female"
+                    checked={gender==='female'}
+                    onChange={e=>setGender(e.target.value)}
                     name="flexRadioDefault" 
                     id="flexRadioDefault2" 
                      />
@@ -70,6 +89,7 @@ export default function Form(){
                     type="number"
                     className="form-control form-control-sm"
                     id="Height"
+                    onChange={e=>setHeight(e.target.value)}
                     placeholder="In cm"
                 />
 
@@ -86,6 +106,7 @@ export default function Form(){
                     type="number"
                     className="form-control form-control-sm"
                     id="Weight"
+                    onChange={e=>setWeight(e.target.value)}
                    placeholder="In kg"
                 />
                 </div>
@@ -120,6 +141,7 @@ export default function Form(){
                     type="number"
                     className="form-control form-control-sm"
                     id="Weight"
+                    onChange={e=>setBudget(e.target.value)}
                    
                 />
                 </div>
