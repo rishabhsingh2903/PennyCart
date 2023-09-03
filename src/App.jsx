@@ -31,12 +31,12 @@ export default function App(){
 
     function storeData(name,age,gender,height,weight,activity,budget){
         const activityLevelMap = {
-            'Sedentary: little or no exercise': 'level _ 1',
-            'Exercise 1-3 times/week': 'level _ 2',
-            'Exercise 4-5 times/week': 'level _ 3',
-            'Daily exercise or intense exercise 3-4 times/week': 'level _ 4',
+            'Sedentary: little or no exercise': 'level_1',
+            'Exercise 1-3 times/week': 'level_2',
+            'Exercise 4-5 times/week': 'level_3',
+            'Daily exercise or intense exercise 3-4 times/week': 'level_4',
             'Intense exercise 6-7 times/week': 'level _ 5',
-            'Very intense exercise daily, or physical job': 'level _ 6',
+            'Very intense exercise daily, or physical job': 'level_6',
           };
           const activitylvl=activityLevelMap[activity]
         const newData={

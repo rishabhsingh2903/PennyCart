@@ -13,7 +13,7 @@ export default function Info({data}){
         <div >
           <div className="card">
             <div className="card-body">
-              <h4 className="card-title text-center">User Information</h4>
+              <h4 className="card-title text-center">Information</h4>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                   <strong>Name:</strong> {data.Name}

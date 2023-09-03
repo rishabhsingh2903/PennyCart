@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Form({onsubmit}){
     const [name,setName]=useState('');
     const [age,setAge]=useState('');
@@ -7,10 +8,13 @@ export default function Form({onsubmit}){
     const [weight,setWeight]=useState('');
     const [activity,setActivity]=useState('');
     const [budget,setBudget]=useState('');                        
-
+    const navigate=useNavigate();
     function formsubmit(e){
+        e.preventDefault();
 
         onsubmit(name,age,gender,height,weight,activity,budget);
+        navigate('/info')
+
     }
     function getinfo(e){
         setActivity(e.target.textContent);
@@ -18,7 +22,7 @@ export default function Form({onsubmit}){
     return (<>
         <h1 className="d-flex justify-content-center align-items-center">Form</h1>
         <div className="d-flex justify-content-center align-items-center vh-100">
-            <form action="/info"className="col-md-6" onSubmit={formsubmit}>
+            <form  className="col-md-6" onSubmit={formsubmit}>
 
 
 
@@ -33,6 +37,7 @@ export default function Form({onsubmit}){
                     className="form-control form-control-sm"
                     id="Name"
                     placeholder="Example: Rishabh Singh"
+                    required
                 />
                 </div>
 
@@ -47,6 +52,8 @@ export default function Form({onsubmit}){
                     className="form-control form-control-sm"
                     id="Age"
                     onChange={e=>setAge(e.target.value)}
+                    placeholder="<=80"
+                    required
                 />
                 </div>
 
@@ -56,7 +63,7 @@ export default function Form({onsubmit}){
                     <input className="form-check-input" 
                     type="radio"
                     value="male"
-                    checked={gender==='male'}
+                
                     onChange={e=>setGender(e.target.value)}
                     name="flexRadioDefault" 
                     id="flexRadioDefault1"
@@ -69,7 +76,7 @@ export default function Form({onsubmit}){
                     <input className="form-check-input" 
                     type="radio" 
                     value="female"
-                    checked={gender==='female'}
+                
                     onChange={e=>setGender(e.target.value)}
                     name="flexRadioDefault" 
                     id="flexRadioDefault2" 
@@ -90,7 +97,7 @@ export default function Form({onsubmit}){
                     className="form-control form-control-sm"
                     id="Height"
                     onChange={e=>setHeight(e.target.value)}
-                    placeholder="In cm"
+                    placeholder=">=130 and <=230 in cm"
                 />
 
                 
@@ -107,7 +114,7 @@ export default function Form({onsubmit}){
                     className="form-control form-control-sm"
                     id="Weight"
                     onChange={e=>setWeight(e.target.value)}
-                   placeholder="In kg"
+                   placeholder=">=40 and <=160 in kg"
                 />
                 </div>
 
