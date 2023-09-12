@@ -26,7 +26,7 @@ export default function Cart(){
 
         try {
             const response = await axios.request(options);
-            console.log(response.data.hints);
+            console.log(response.data);
             setList(response.data.hints);
         } catch (error) {
             console.error(error);
