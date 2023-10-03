@@ -4,7 +4,7 @@ export default function Info({data}){
     <br></br>
 
     <div className="d-flex justify-content-center mb-3">
-          <Link to="/info/form" className="btn btn-primary">
+          <Link to="/Penny-Cart/info/form" className="btn btn-primary">
             Edit/Add information
           </Link>
     </div>

@@ -55,13 +55,13 @@ export default function App(){
         
 
         <Routes>
-            <Route path="/" element={<Welcome />}/>
-            <Route path='/cart' element={<Cart />}/>
-            <Route path='/info'>
+            <Route path="/Penny-Cart/" element={<Welcome />}/>
+            <Route path='/Penny-Cart/cart' element={<Cart />}/>
+            <Route path='/Penny-Cart/info'>
                 <Route index element={<Info data={data}/>}/>
                 <Route path="form" element={<Form onsubmit={storeData}/>}/>
             </Route>
-            <Route path='/dashBoard' element={<Dashboard />}/>
+            <Route path='/Penny-Cart/dashBoard' element={<Dashboard />}/>
         </Routes>
     
     </>)

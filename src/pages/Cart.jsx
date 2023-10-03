@@ -2,12 +2,26 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Search from "../components/Search";
 import SearchResult from '../components/SearchResult';
+import SelectedItem from './Selecteditem';
 export default function Cart(){
+    const [picked,setPicked]=useState([]);
     const [food,setFood]=useState('');
     const [list,setList]=useState([]);
     function fetchFood(item){
         setFood(item);
     }
+
+    // function foodSelected(){
+    //     this 
+    // }
+    function picker(id) {
+        setPicked(prevPicked => {
+            const selectedObject = list[id];
+            return [...prevPicked, selectedObject];
+        });
+        console.log(picked);
+    }
+    
     async function foodCart(){
         const options = {
         method: 'GET',
@@ -26,7 +40,7 @@ export default function Cart(){
 
         try {
             const response = await axios.request(options);
-            console.log(response.data);
+            // console.log(response.data);
             setList(response.data.hints);
         } catch (error) {
             console.error(error);
@@ -56,13 +70,14 @@ export default function Cart(){
             </div>
             <div className="row">
                 <div className="col-md-12"style={customborder}>
-                    <SearchResult list={list}/>
+                    <SearchResult list={list} picker={picker}/>
                 </div>
             </div>
         </div>
         <div className="col-md-4"style={customborder}>
           {/* right-hand side content */}
           <h3>selected item</h3>
+          <SelectedItem pickedItem={picked}/>
         </div>
       </div>
     </div>

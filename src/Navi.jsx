@@ -9,10 +9,10 @@ export default function Navi(){
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-                <Link to ="/" className="nav-link">Welcome</Link>
-                <Link to ="/cart" className="nav-link">Cart</Link>
-                <Link to ="/dashboard" className="nav-link">Dashboard</Link>
-                <Link to ="/info" className="nav-link">Info</Link>
+                <Link to ="/Penny-Cart/" className="nav-link">Welcome</Link>
+                <Link to ="/Penny-Cart/cart" className="nav-link">Cart</Link>
+                <Link to ="/Penny-Cart/dashboard" className="nav-link">Dashboard</Link>
+                <Link to ="/Penny-Cart/info" className="nav-link">Info</Link>
             </div>
             </div>
         </div>

@@ -13,7 +13,7 @@ export default function Form({onsubmit}){
         e.preventDefault();
 
         onsubmit(name,age,gender,height,weight,activity,budget);
-        navigate('/info')
+        navigate('/Penny-Cart/info')
 
     }
     function getinfo(e){
