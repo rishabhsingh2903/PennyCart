@@ -3,24 +3,33 @@ import { useEffect, useState } from 'react';
 import Search from "../components/Search";
 import SearchResult from '../components/SearchResult';
 import SelectedItem from './Selecteditem';
+import Meter from '../components/Meter';
 export default function Cart(){
-    const [picked,setPicked]=useState([]);
+    const [picked,setPicked]=useState(()=>{
+        const localpicked=localStorage.getItem("pick")
+        if (localpicked==null){
+            return []
+        }
+        return JSON.parse(localpicked)
+    });
     const [food,setFood]=useState('');
     const [list,setList]=useState([]);
-    function fetchFood(item){
-        setFood(item);
-    }
 
     // function foodSelected(){
     //     this 
     // }
     function picker(id) {
         setPicked(prevPicked => {
+            const previousPickedArray = Array.isArray(prevPicked) ? prevPicked : [];
             const selectedObject = list[id];
-            return [...prevPicked, selectedObject];
+            return [...previousPickedArray, selectedObject];
         });
-        console.log(picked);
     }
+    useEffect(() => {
+        const pickedJSON=JSON.stringify(picked);
+        localStorage.setItem("pick",pickedJSON)
+        console.log(picked);
+    }, [picked]);
     
     async function foodCart(){
         const options = {
@@ -40,7 +49,7 @@ export default function Cart(){
 
         try {
             const response = await axios.request(options);
-            // console.log(response.data);
+            console.log(response.data);
             setList(response.data.hints);
         } catch (error) {
             console.error(error);
@@ -74,10 +83,19 @@ export default function Cart(){
                 </div>
             </div>
         </div>
-        <div className="col-md-4"style={customborder}>
-          {/* right-hand side content */}
-          <h3>selected item</h3>
-          <SelectedItem pickedItem={picked}/>
+        <div className="col-md-4">
+            <div className='row'>
+                <div className='col-md-12'style={customborder}>
+                    <h3>Daily Calorie Requirement(kcal)</h3>
+                    <Meter picked={picked} />
+                </div>
+            </div>
+            <div className='row'>
+                <div className='col-md-12'style={customborder}>
+                    <h3>Each item Serving Size: 100gm</h3>
+                    <SelectedItem pickedItem={picked} setpicked={setPicked}/>
+                </div>
+            </div>
         </div>
       </div>
     </div>

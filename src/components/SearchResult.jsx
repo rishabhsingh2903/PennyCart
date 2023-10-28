@@ -25,8 +25,12 @@ export default function SearchResult({ list,picker }) {
             <div className="row">
               <button onClick={() => picker(index)}>Add To Cart</button>
             </div>
+            <ul className="list-group list-group-flush bg-light">
+          <li className="list-group-item">Calories:{result.food.nutrients.ENERC_KCAL.toFixed(2)}kcal</li>
+        </ul>
           </div>
         </div>
+
       </div>
     ))
   }

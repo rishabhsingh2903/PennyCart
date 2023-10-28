@@ -36,6 +36,9 @@ export default function Info({data}){
                 <li className="list-group-item">
                   <strong>Budget:</strong> {data.Budget}
                 </li>
+                <li className="list-group-item">
+                  <strong>Calorie Requirement:</strong> {data.CalorieReq}
+                </li>
               </ul>
             </div>
           </div>
